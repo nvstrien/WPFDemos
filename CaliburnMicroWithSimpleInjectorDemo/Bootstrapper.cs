@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace CaliburnMicroWithSimpleInjectorDemo
 {
+    // configuration as seen here: https://www.cshandler.com/2015/09/migrating-to-simpleinjector-30-with.html#.WTaj-8a1t9M
+
+
     public class Bootstrapper : BootstrapperBase
     {
         public static readonly Container _container = new();
@@ -40,6 +43,7 @@ namespace CaliburnMicroWithSimpleInjectorDemo
 
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
+            // as discussed here: https://stackoverflow.com/questions/32258863/simple-injector-getallinstances-throwing-exception-with-caliburn-micro
 
             //_container.GetAllInstances(service);
 
@@ -62,7 +66,8 @@ namespace CaliburnMicroWithSimpleInjectorDemo
             return new[] { Assembly.GetExecutingAssembly() };
         }
 
-
+        // see: https://stackoverflow.com/questions/37631468/caliburn-micro-bootstrapper-buildup-method-throws-exception-when-simple-inject
+        // commenting out BuildUp still throws an exception in SimpleInjector.dll 
         protected override void BuildUp(object instance)
         {
             InstanceProducer registration = _container.GetRegistration(instance.GetType(), true);
