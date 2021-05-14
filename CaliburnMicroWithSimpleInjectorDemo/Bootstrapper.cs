@@ -26,6 +26,7 @@ namespace CaliburnMicroWithSimpleInjectorDemo
         {
             _container.Register<IWindowManager, WindowManager>();
             _container.RegisterSingleton<IEventAggregator, EventAggregator>();
+            //_container.Register<SequentialResult>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

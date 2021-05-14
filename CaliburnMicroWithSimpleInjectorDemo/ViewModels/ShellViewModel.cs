@@ -9,11 +9,11 @@ namespace CaliburnMicroWithSimpleInjectorDemo.ViewModels
 {
     public class ShellViewModel
     {
-        public async Task Button1()
+        public void Button1()
         {
             Debug.Print("Hello world");
 
-            var data = await GetSampleDataAsync();
+            var data = GetSampleData();
 
             foreach (var item in data)
             {
@@ -21,13 +21,31 @@ namespace CaliburnMicroWithSimpleInjectorDemo.ViewModels
             }
         }
 
-        public async Task<IEnumerable<string>> GetSampleDataAsync()
+        public IEnumerable<string> GetSampleData()
         {
-            // method simulating getting async data
             var data = new List<string>() { "hello", "world" };
-
-            return await Task.FromResult(data);
+            return data;
         }
+
+        //public async Task Button1()
+        //{
+        //    Debug.Print("Hello world");
+
+        //    var data = await GetSampleDataAsync();
+
+        //    foreach (var item in data)
+        //    {
+        //        Debug.Print(item);
+        //    }
+        //}
+
+        //public async Task<IEnumerable<string>> GetSampleDataAsync()
+        //{
+        //    // method simulating getting async data
+        //    var data = new List<string>() { "hello", "world" };
+
+        //    return await Task.FromResult(data);
+        //}
 
     }
 }
